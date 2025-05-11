@@ -39,9 +39,14 @@ async function navigateToCases(page: Page) {
 }
 
 async function searchForCases(page: Page, achternaam: string) {
-  await page.getByRole('button', {name: '󰅀 Zoeken'}).click();
+  // First, click the accordion "Zoeken" button to expand the search panel
+  await page.locator('button.cds--accordion__heading:has(.cds--accordion__title:text("Zoeken"))').click();
+
+  // Fill in the last name field
   await page.locator('v-input').filter({hasText: 'Achternaam aanvrager'}).getByRole('textbox').click();
   await page.locator('v-input').filter({hasText: 'Achternaam aanvrager'}).getByRole('textbox').fill(achternaam);
-  await page.getByRole('button', {name: 'Zoeken', exact: true}).click();
+
+  // Click the search button using the test ID
+  await page.getByTestId('search-fields-search-button').click();
 }
 
