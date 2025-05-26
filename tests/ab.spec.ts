@@ -48,7 +48,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
     // 2. Login and Navigation
     await test.step('Login and navigate to Algemene Bijstand aanvraag', async () => {
       try {
-        if (infra === "dev") {
+        if (infra === "alo-dev" || infra === "local") {
           await loginLocal(page);
           console.log('Successfully logged in');
         }
@@ -155,32 +155,67 @@ async function waitForAngular(page: Page) {
 
 async function loginLocal(page: Page) {
   console.log('Attempting local login...');
+  const loginPageUrl = 'http://localhost:4200/';
   try {
-    await page.goto('http://localhost:4200/');
-    
+    await page.goto(loginPageUrl);
+    console.log(`Navigated to ${loginPageUrl}`);
+
     // Validate credentials
     if (!usernameLocal || !passwordLocal) {
       throw new Error('Missing local login credentials');
     }
-    
+
     // Wait for login form to be ready
+    console.log('Waiting for login form elements...');
     await page.waitForSelector('input[type="text"]', { state: 'visible', timeout: 10000 });
     await page.waitForSelector('input[type="password"]', { state: 'visible', timeout: 10000 });
-    
+    console.log('Login form elements are visible.');
+
     await page.getByLabel('Username or email').fill(usernameLocal);
     await page.getByLabel('Password').fill(passwordLocal);
+    console.log('Filled username and password.');
+
     await page.getByRole('button', {name: 'Sign In'}).click();
-    
-    // Wait for login to complete
-    await page.waitForLoadState('networkidle');
-    
-    // Verify successful login
-    const loginError = await page.getByText(/invalid credentials|login failed/i).isVisible();
-    if (loginError) {
-      throw new Error('Login failed - invalid credentials');
+    console.log('Clicked Sign In button.');
+
+    // Wait for login to complete - check for URL change or a specific post-login element
+    console.log('Waiting for navigation to occur after login...');
+    try {
+      // Wait for the URL to be different from the login page URL
+      await page.waitForURL((url) => url.toString() !== loginPageUrl, { timeout: 15000 });
+      console.log('URL changed after login to:', page.url());
+    } catch (e) {
+      console.error('URL did not change after login attempt within timeout.');
+      await page.screenshot({ path: 'login-url-unchanged-error.png', fullPage: true });
+      console.log('Screenshot saved as login-url-unchanged-error.png');
+      throw new Error('Login failed: URL did not change after sign-in attempt.');
     }
+
+    // Wait for network to be idle after potential navigation
+    await page.waitForLoadState('networkidle', {timeout: 20000});
+    console.log('Network is idle after login processing.');
+
+    // Verify successful login by checking for absence of common error messages
+    // This check is secondary if URL has already changed.
+    const loginErrorVisible = await page.getByText(/invalid credentials|login failed/i).isVisible({timeout: 2000}); // Short timeout, should be quick if error is present
+    if (loginErrorVisible) {
+      await page.screenshot({ path: 'login-credentials-error.png', fullPage: true });
+      console.log('Screenshot saved as login-credentials-error.png');
+      throw new Error('Login failed - explicit error message displayed (e.g., invalid credentials).');
+    }
+    console.log('Local login appears successful.');
+
   } catch (error) {
-    console.error('Login failed:', error);
+    console.error('Login failed:', error.message);
+    // Ensure a screenshot is taken if not already captured by more specific errors above
+    if (!error.message.includes('URL did not change') && !error.message.includes('explicit error message')) {
+        try {
+            await page.screenshot({ path: 'login-generic-error.png', fullPage: true });
+            console.log('Screenshot saved as login-generic-error.png');
+        } catch (screenshotError) {
+            console.error('Failed to save generic login error screenshot:', screenshotError.message);
+        }
+    }
     throw new Error(`Login failed: ${error.message}`);
   }
 }
