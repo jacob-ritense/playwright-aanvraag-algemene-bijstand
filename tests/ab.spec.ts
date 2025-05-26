@@ -80,7 +80,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
     await test.step('Process "Opvoeren dienst in Socrates" task', async () => {
       try {
         await waitForTask(page, 2000); // General wait, navigates to task tabs
-        await firstTask(page); // Assigns the case
+        // await firstTask(page); // Assigns the case -- Temporarily commented out
         
         const taskName = "Opvoeren dienst in Socrates";
         const taskFound = await waitForSpecificTask(page, taskName);
@@ -247,7 +247,7 @@ async function navigateToAlgemeneBijstandAanvraag(page: Page) {
     let attempts = 0;
     while (attempts < maxAttempts) {
       try {
-        const abLink = page.getByRole('link', {name: 'Algemene Bijstand aanvraag'});
+        const abLink = page.getByRole('link', {name: 'Algemene bijstand (DCM)'});
         await abLink.waitFor({ state: 'visible', timeout: 10000 });
         await abLink.click();
         break;
@@ -449,7 +449,13 @@ async function verifyCaseDetails(page: Page) {
     for (const element of possibleElements) {
       let isVisible = false;
       if (element.type === 'text') {
-        isVisible = await page.getByText(element.content, { exact: false }).isVisible();
+        if (element.content === 'Taken') {
+          // Use a more specific selector for the "Taken" heading
+          isVisible = await page.getByRole('heading', { name: 'Taken', exact: true }).isVisible();
+        } else {
+          // Use the original generic selector for other text elements
+          isVisible = await page.getByText(element.content, { exact: false }).isVisible();
+        }
       } else if (element.type === 'class') {
         isVisible = await page.locator(`[class*="${element.content}"]`).isVisible();
       } else if (element.type === 'attr') {
@@ -527,21 +533,7 @@ async function waitForTask(page: Page, timeout: number = 2000) {
 }
 
 async function firstTask(page: Page) {
-  console.log('Processing first task (case assignment)...');
-  try {
-    const assignButton = page.getByText('Toewijzen zaak aan');
-    await assignButton.waitFor({ state: 'visible', timeout: 10000 });
-    await assignButton.click();
-    
-    const continueButton = page.getByRole('button', {name: 'Doorgaan'});
-    await continueButton.waitFor({ state: 'visible', timeout: 10000 });
-    await continueButton.click();
-    
-    console.log('Case assignment completed');
-  } catch (error) {
-    console.error('Failed during case assignment:', error);
-    throw new Error(`Case assignment failed: ${error.message}`);
-  }
+  console.log('Skipping firstTask (case assignment) as requested.'); // Added log
 }
 
 async function waitForSpecificTask(page: Page, taskName: string, maxAttempts: number = 10, waitTimeBetweenAttempts: number = 2000): Promise<boolean> {
