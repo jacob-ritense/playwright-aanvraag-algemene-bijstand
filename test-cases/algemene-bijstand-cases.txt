@@ -1,0 +1,40 @@
+# Algemene Bijstand Aanvraag Test Cases
+
+## Test Case: Basic Algemene Bijstand Application Flow
+### Prerequisites
+- GZAC Sociaal Domein running on localhost:4200
+- Valid local credentials in .env.properties
+- API configuration set up correctly
+
+### Steps
+1. System creates a new request with random last name
+2. Login to local environment
+3. Navigate to Algemene Bijstand cases
+4. Search for the created case
+5. Open the case
+6. Assign the case
+7. Wait for "Registeren aanvrager en dienst" task
+8. Complete initial registration
+
+### Expected Results
+- Case should be created successfully
+- All navigation steps should work
+- Task "Registeren aanvrager en dienst" should appear
+- Registration should be completed
+
+## Adding New Test Cases
+To add a new test case, follow this format:
+
+### Test Case: [Name]
+### Prerequisites
+- List required setup
+- List required data
+
+### Steps
+1. Step 1
+2. Step 2
+...
+
+### Expected Results
+- List expected outcomes
+- List validation points 

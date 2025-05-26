@@ -1,0 +1,1772 @@
+POST {{objects_api_url}}
+Authorization: Token {{token}}
+Content-Crs: EPSG:4326
+Content-Type: application/json
+
+{
+    "type": "{{objecttypes_api_url_alo}}",
+    "record": {
+         "typeVersion": "{{objecttypes_version}}",
+        "data": {
+            "bsn": "999991954",
+            "data": {
+                "uw-gegevens": {
+                    "naw": {
+                        "grAdresgegevens": {
+                            "plaats": "'s-Gravenhage",
+                            "straat": "Vuurtorenweg",
+                            "postcode": "2583 XL",
+                            "huisletter": "",
+                            "huisnummer": "3",
+                            "toevoeging": ""
+                        },
+                        "grPersoongegevens": {
+                            "Bsn": "999991954",
+                            "voornaam": "Robert Johannes",
+                            "achternaam": "Leijenhorst",
+                            "voorletters": "R.J.",
+                            "voorvoegsels": "van der",
+                            "geboortedatum": "1980-04-20"
+                        }
+                    }
+                },
+                "alo-inleiding": {},
+                "alo-uitbetaling": {
+                    "hoeBetaald": "VERDEELD_OVER_MIJZELF_EN_MIJN_PARTNER",
+                    "ibanAanWie": "NEE",
+                    "ibanUitbetaling": "NL98INGB0003856625",
+                    "grUitbetalenAnder": {
+                        "ibanNaamAnder": "Jan",
+                        "ibanAdresAnder": "Ergens in Amsterdam",
+                        "ibanUitbetalingAnder": "NL98UGBI0771565860",
+                        "ibanUitbetalingWaaromAnder": "Ik durf niet te pinnen"
+                    },
+                    "naamRekeninghouder": "Guus",
+                    "ibanUitbetalingPartner": "NL18RABO0123459876",
+                    "naamRekeninghouderPartner": "Kees"
+                },
+                "alo-uw-inkomsten": {
+                    "grUitkering": {
+                        "grWw": {
+                            "ww": 65.1,
+                            "geenWw": false,
+                            "wwPeriode": "MAAND",
+                            "wwOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/8ea234eb-6be5-4978-bc9d-859eb1bbb243",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/8ea234eb-6be5-4978-bc9d-859eb1bbb243",
+                                        "form": "",
+                                        "name": "herp.txt",
+                                        "size": 49,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "herp-4f6ef9d7-6de8-4924-99e4-77e24bba4859.txt",
+                                    "size": 49,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "herp.txt"
+                                }
+                            ]
+                        },
+                        "grAnw": {
+                            "anw": 456.3,
+                            "geenAnw": false,
+                            "anwPeriode": "PER_VIER_WEKEN",
+                            "anwOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/117e2043-ba80-4c68-8d3f-61a8f7032d1f",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/117e2043-ba80-4c68-8d3f-61a8f7032d1f",
+                                        "form": "",
+                                        "name": "herp.txt",
+                                        "size": 49,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "herp-37036fcb-bb64-4212-8ab4-8d4fc5520bac.txt",
+                                    "size": 49,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "herp.txt"
+                                }
+                            ]
+                        },
+                        "grAow": {
+                            "aow": 1,
+                            "aowPeriode": "WEEK",
+                            "aowOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/73159535-fb31-4aef-9318-b5b8c98561a7",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/73159535-fb31-4aef-9318-b5b8c98561a7",
+                                        "form": "",
+                                        "name": "upload2.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload2-b0eaf9dc-8ec0-43ed-a821-314da7e7222a.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload2.txt"
+                                }
+                            ],
+                            "geenUitkeringsOverzicht": false
+                        },
+                        "grWao": {
+                            "wao": 3.1,
+                            "geenWao": false,
+                            "waoPeriode": "WEEK",
+                            "waoOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/1a16c855-7da7-465e-8f4a-f621da496ea9",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/1a16c855-7da7-465e-8f4a-f621da496ea9",
+                                        "form": "",
+                                        "name": "upload3.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload3-532ce008-8ff1-4d5d-a027-e71192edce34.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload3.txt"
+                                }
+                            ]
+                        },
+                        "grWia": {
+                            "wia": 56.2,
+                            "geenWia": false,
+                            "wiaPeriode": "WEEK",
+                            "wiaOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e427d376-0684-4950-89b9-0dde4b001950",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e427d376-0684-4950-89b9-0dde4b001950",
+                                        "form": "",
+                                        "name": "id_card.jpg",
+                                        "size": 30366,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "id_card-45d13a84-d2a3-4147-bdcf-64bbfdfc5204.jpg",
+                                    "size": 30366,
+                                    "type": "image/jpeg",
+                                    "storage": "url",
+                                    "originalName": "id_card.jpg"
+                                }
+                            ]
+                        },
+                        "grWajong": {
+                            "wajong": 56.8,
+                            "geenWajong": false,
+                            "wajongPeriode": "PER_VIER_WEKEN",
+                            "wajongOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a5a978ed-7aca-4f38-bfa4-6c538c517bb1",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a5a978ed-7aca-4f38-bfa4-6c538c517bb1",
+                                        "form": "",
+                                        "name": "upload5.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload5-247c2d91-e4bd-476f-9a82-1bb450772737.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload5.txt"
+                                }
+                            ]
+                        },
+                        "grZiektewet": {
+                            "ziektewet": 4653.6,
+                            "geenZiektewet": false,
+                            "ziektewetPeriode": "WEEK",
+                            "ziektewetOverzicht": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/09503ea6-194f-4d9e-9251-fe8ffc0bcda4",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/09503ea6-194f-4d9e-9251-fe8ffc0bcda4",
+                                        "form": "",
+                                        "name": "id_card.jpg",
+                                        "size": 30366,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "id_card-739e3bad-a601-4446-8e2c-3e3199afd0d0.jpg",
+                                    "size": 30366,
+                                    "type": "image/jpeg",
+                                    "storage": "url",
+                                    "originalName": "id_card.jpg"
+                                }
+                            ]
+                        },
+                        "welkeUitkering": {
+                            "WW": true,
+                            "ANW": true,
+                            "AOW": true,
+                            "WAO": true,
+                            "WIA": true,
+                            "WAJONG": true,
+                            "ZIEKTEWET": true
+                        }
+                    },
+                    "grLoondienst": {
+                        "hhgWerkgevers": [
+                            {
+                                "maaltijd": 15000.1,
+                                "onkosten": 15000.2,
+                                "nettoloon": 15000.3,
+                                "reiskosten": 20000.4,
+                                "uploadLoon": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/b9e0f5fa-62af-4821-9ea8-3e32bfaa2885",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/b9e0f5fa-62af-4821-9ea8-3e32bfaa2885",
+                                            "form": "",
+                                            "name": "id_card.jpg",
+                                            "size": 30366,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "id_card-b308e632-aad2-41a8-91ad-b44bf62f57f3.jpg",
+                                        "size": 30366,
+                                        "type": "image/jpeg",
+                                        "storage": "url",
+                                        "originalName": "id_card.jpg"
+                                    }
+                                ],
+                                "hoevaakLoon": "WEEK",
+                                "hoeveelNatura": 15000.4,
+                                "naamWerkgever": "FEBO",
+                                "soortContract": "VAST_CONTRACT",
+                                "geenLoonstrook": false,
+                                "hoeveelUurWerk": 90,
+                                "extraUitbetaald": {
+                                    "LOON_IN_NATURA": true,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "EINDEJAARSUITKERING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": true
+                                },
+                                "kiesLoonheffing": "JA",
+                                "kiesStopContract": "JA",
+                                "urenvermindering": "NEE",
+                                "kiesExtraUitbetaald": "JA",
+                                "wanneerStoptContract": "2025-01-01"
+                            },
+                            {
+                                "maaltijd": 20.1,
+                                "onkosten": 2.7,
+                                "nettoloon": 5000000.6,
+                                "reiskosten": 12.3,
+                                "hoevaakLoon": "PER_4_WEKEN",
+                                "hoeveelNatura": 50.4,
+                                "naamWerkgever": "Mc Donalds",
+                                "soortContract": "CONTRACT_BEPAALDE_TIJD",
+                                "geenLoonstrook": true,
+                                "hoeveelUurWerk": 2,
+                                "extraUitbetaald": {
+                                    "LOON_IN_NATURA": true,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "EINDEJAARSUITKERING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": false
+                                },
+                                "kiesLoonheffing": "NEE",
+                                "kiesStopContract": "NEE",
+                                "urenvermindering": "JA",
+                                "kiesExtraUitbetaald": "JA"
+                            },
+                            {
+                                "maaltijd": 613156646.5,
+                                "onkosten": 5.3,
+                                "nettoloon": 50000000.9,
+                                "reiskosten": 1.6,
+                                "uploadLoon": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e0583611-0320-421b-b417-96f6b38567e2",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e0583611-0320-421b-b417-96f6b38567e2",
+                                            "form": "",
+                                            "name": "island.jpg",
+                                            "size": 118903,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "island-a2fbd04a-93d1-485f-a230-ea51272262a4.jpg",
+                                        "size": 118903,
+                                        "type": "image/jpeg",
+                                        "storage": "url",
+                                        "originalName": "island.jpg"
+                                    }
+                                ],
+                                "hoevaakLoon": "MAAND",
+                                "naamWerkgever": "Burgermeester",
+                                "soortContract": "CONTRACT_OPROEP_BASIS",
+                                "geenLoonstrook": false,
+                                "hoeveelUurWerk": 2,
+                                "extraUitbetaald": {
+                                    "LOON_IN_NATURA": false,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "EINDEJAARSUITKERING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": false
+                                },
+                                "kiesLoonheffing": "NEE",
+                                "kiesStopContract": "JA",
+                                "urenvermindering": "JA",
+                                "kiesExtraUitbetaald": "JA",
+                                "wanneerStoptContract": "2025-01-02"
+                            },
+                            {
+                                "nettoloon": 10.8,
+                                "uploadLoon": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/dc63f306-d083-479d-a59d-1ea4d5c536d2",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/dc63f306-d083-479d-a59d-1ea4d5c536d2",
+                                            "form": "",
+                                            "name": "upload2.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload2-17c859c8-267d-4d31-ace2-52d66f5a3a63.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload2.txt"
+                                    }
+                                ],
+                                "hoevaakLoon": "KWARTAAL",
+                                "naamWerkgever": "Snackbar de Gier",
+                                "soortContract": "NUL_UREN_CONTRACT",
+                                "geenLoonstrook": false,
+                                "hoeveelUurWerk": 80,
+                                "kiesLoonheffing": "NEE",
+                                "kiesStopContract": "JA",
+                                "urenvermindering": "NEE",
+                                "kiesExtraUitbetaald": "NEE",
+                                "wanneerStoptContract": "2025-01-08"
+                            }
+                        ]
+                    },
+                    "grPensioenen": {
+                        "hhgPensioenen": [
+                            {
+                                "pensioenBedrag": 1.3,
+                                "pensioenPeriode": "WEEK",
+                                "pensioenOverzicht": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/cdfc9926-d4f4-4f86-9284-2e806f6afd28",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/cdfc9926-d4f4-4f86-9284-2e806f6afd28",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-df265b1a-1081-4767-824e-bb2ba0f98692.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "geenPensioenUpload": false
+                            },
+                            {
+                                "pensioenBedrag": 2.5,
+                                "pensioenPeriode": "PER_VIER_WEKEN",
+                                "pensioenOverzicht": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/3adafc57-3230-4323-82c0-7b72f9d3c989",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/3adafc57-3230-4323-82c0-7b72f9d3c989",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-1977b11e-aee5-430d-aeb7-af29c0dfec13.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "geenPensioenUpload": false
+                            },
+                            {
+                                "pensioenBedrag": 3.6,
+                                "pensioenPeriode": "MAAND",
+                                "pensioenOverzicht": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/008cf45a-2e4a-49ac-9465-f616c74047df",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/008cf45a-2e4a-49ac-9465-f616c74047df",
+                                            "form": "",
+                                            "name": "upload4.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload4-1aba1dd7-cb54-4d0e-8b80-b4c2b2c1b343.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload4.txt"
+                                    }
+                                ],
+                                "geenPensioenUpload": false
+                            },
+                            {
+                                "pensioenBedrag": 4.5,
+                                "pensioenPeriode": "WEEK",
+                                "pensioenOverzicht": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/9b7efd8b-aeca-4afd-ac80-893316742433",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/9b7efd8b-aeca-4afd-ac80-893316742433",
+                                            "form": "",
+                                            "name": "herp.txt",
+                                            "size": 49,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "herp-b7debb7d-56a0-4647-bf39-c26f52c42a64.txt",
+                                        "size": 49,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "herp.txt"
+                                    }
+                                ],
+                                "geenPensioenUpload": false
+                            },
+                            {
+                                "pensioenBedrag": 5.7,
+                                "pensioenPeriode": "WEEK",
+                                "geenPensioenUpload": true
+                            },
+                            {
+                                "pensioenBedrag": 6.8,
+                                "pensioenPeriode": "WEEK",
+                                "geenPensioenUpload": true
+                            }
+                        ]
+                    },
+                    "grAlimentatie": {
+                        "alimentatie": "JA",
+                        "betaaltPartner": "NEE",
+                        "alimentatieLBIO": "NEE",
+                        "alimentatieHulpEx": "JA",
+                        "alimentatieHoeveel": 2.7,
+                        "grAlimentatieLogic": {
+                            "geenAlimentatie": true
+                        },
+                        "alimentatieHulpExHoeveel": 3.7
+                    },
+                    "heeftInkomsten": "JA",
+                    "soortenInkomsten": {
+                        "PENSIOEN": true,
+                        "UITKERING": true,
+                        "LOONDIENST": true,
+                        "ALIMENTATIE": true,
+                        "HEFFINGSKORTING": true,
+                        "OVERIGE_INKOMSTEN": true,
+                        "INKOMEN_UIT_BUITENLAND": true,
+                        "INKOMEN_UIT_ONDERNEMING": true,
+                        "INKOMSTEN_UIT_ONDERHUUR": true
+                    },
+                    "grOverigeInkomsten": {
+                        "overigeBedrag": 1560.6,
+                        "grUploadBewijsOverigeInkomsten": {
+                            "overigeUpload": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/28bbf9c5-d1cf-4733-9a3d-93367f73d6e1",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/28bbf9c5-d1cf-4733-9a3d-93367f73d6e1",
+                                        "form": "",
+                                        "name": "id_card.jpg",
+                                        "size": 30366,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "id_card-aa46188a-30d9-47c9-a18f-6c6e214095cc.jpg",
+                                    "size": 30366,
+                                    "type": "image/jpeg",
+                                    "storage": "url",
+                                    "originalName": "id_card.jpg"
+                                }
+                            ],
+                            "geenOverigeInkomsten": false
+                        }
+                    },
+                    "grHeffingskortingen": {
+                        "heffingskortingSoort": {
+                            "ALGEMENE_HEFFINGSKORTING": true,
+                            "INKOMENSAFHANKELIJKE_COMBINATIEKORTING": true
+                        },
+                        "heffingskortingBedragTotaal": 6.2
+                    },
+                    "grInkomenBuitenland": {
+                        "inkomenBuitenlandBedrag": 152.4,
+                        "inkomenBuitenlandPeriode": "WEEK",
+                        "grUploadInkomenBuitenland": {
+                            "geenInkomensBewijs": false,
+                            "inkomenBuitenlandUpload": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/25e72333-c551-4b38-84ff-cec6702b4719",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/25e72333-c551-4b38-84ff-cec6702b4719",
+                                        "form": "",
+                                        "name": "Test docx bestand.docx",
+                                        "size": 22294,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "Test docx bestand-e4f93ff3-e481-49e4-9941-563d6a70e206.docx",
+                                    "size": 22294,
+                                    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    "storage": "url",
+                                    "originalName": "Test docx bestand.docx"
+                                }
+                            ]
+                        }
+                    },
+                    "grInkomstenOnderhuur": {
+                        "inkomstenOnderhuurBedrag": 70.6,
+                        "grUploadOnderhuurContract": {
+                            "geenContractUploaden": true
+                        }
+                    },
+                    "grInkomstenOnderneming": {
+                        "kvk": "90002520\t",
+                        "inkomenOnderneming": 153.7
+                    }
+                },
+                "inkomsten-partner": {
+                    "grLoondienstPartner": {
+                        "hhgLoondienstPartner": [
+                            {
+                                "krijgtExtraPartner": "JA",
+                                "geenLoonstrookPartner": false,
+                                "loondienstExtraPartner": {
+                                    "LOON_IN_NATURA": true,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": true,
+                                    "EEN_13DE_MAAND_OF_EINDEJAARSUITKERING": true
+                                },
+                                "loondienstStoptPartner": "JA",
+                                "loondienstBedragPartner": 10.8,
+                                "loondienstNaturaPartner": 2.2,
+                                "loondienstUploadPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/24a6bdca-c6a1-4811-8b81-45b148c96099",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/24a6bdca-c6a1-4811-8b81-45b148c96099",
+                                            "form": "",
+                                            "name": "upload4.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload4-75bd6def-d1bf-4243-b246-bc6be7eaa05e.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload4.txt"
+                                    }
+                                ],
+                                "loondienstPerWeekPartner": 5.6,
+                                "loondienstPeriodePartner": "WEEK",
+                                "loondienstContractPartner": "VAST_CONTRACT",
+                                "loondienstMaaltijdPartner": 5.7,
+                                "loondienstOnkostenPartner": 6.9,
+                                "loondienstWerkgeverPartner": "de beren",
+                                "loondienstReiskostenPartner": 8.7,
+                                "loondienstWanneerStoptPartner": "2024-12-31",
+                                "loondienstHeffingskortingPartner": "JA",
+                                "loondienstUrenverminderingPartner": "JA"
+                            },
+                            {
+                                "krijgtExtraPartner": "JA",
+                                "geenLoonstrookPartner": true,
+                                "loondienstExtraPartner": {
+                                    "LOON_IN_NATURA": true,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": false,
+                                    "EEN_13DE_MAAND_OF_EINDEJAARSUITKERING": true
+                                },
+                                "loondienstStoptPartner": "NEE",
+                                "loondienstBedragPartner": 5.2,
+                                "loondienstNaturaPartner": 4.1,
+                                "loondienstPerWeekPartner": 645.3,
+                                "loondienstPeriodePartner": "PER_4_WEKEN",
+                                "loondienstContractPartner": "CONTRACT_BEPAALDE_TIJD",
+                                "loondienstMaaltijdPartner": 6.5,
+                                "loondienstOnkostenPartner": 9.6,
+                                "loondienstWerkgeverPartner": "pizza hut",
+                                "loondienstReiskostenPartner": 7.0,
+                                "loondienstHeffingskortingPartner": "JA",
+                                "loondienstUrenverminderingPartner": "JA"
+                            },
+                            {
+                                "krijgtExtraPartner": "JA",
+                                "geenLoonstrookPartner": false,
+                                "loondienstExtraPartner": {
+                                    "LOON_IN_NATURA": false,
+                                    "MAALTIJDVERGOEDING": true,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": false,
+                                    "EEN_13DE_MAAND_OF_EINDEJAARSUITKERING": true
+                                },
+                                "loondienstStoptPartner": "NEE",
+                                "loondienstBedragPartner": 86.3,
+                                "loondienstUploadPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/2fa254a0-6dd9-4c25-a63e-cd49e7d39741",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/2fa254a0-6dd9-4c25-a63e-cd49e7d39741",
+                                            "form": "",
+                                            "name": "herp.txt",
+                                            "size": 49,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "herp-8ff83c8f-67cf-4e4d-8228-63a7a7671350.txt",
+                                        "size": 49,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "herp.txt"
+                                    }
+                                ],
+                                "loondienstPerWeekPartner": 1.7,
+                                "loondienstPeriodePartner": "MAAND",
+                                "loondienstContractPartner": "CONTRACT_OPROEP_BASIS",
+                                "loondienstMaaltijdPartner": 5.6,
+                                "loondienstOnkostenPartner": 5623.65,
+                                "loondienstWerkgeverPartner": "burgerking",
+                                "loondienstReiskostenPartner": 645.43,
+                                "loondienstHeffingskortingPartner": "NEE",
+                                "loondienstUrenverminderingPartner": "NEE"
+                            },
+                            {
+                                "krijgtExtraPartner": "JA",
+                                "geenLoonstrookPartner": false,
+                                "loondienstExtraPartner": {
+                                    "LOON_IN_NATURA": false,
+                                    "MAALTIJDVERGOEDING": false,
+                                    "ONKOSTENVERGOEDING": true,
+                                    "REISKOSTENVERGOEDING": true,
+                                    "EEN_KEER_PER_JAAR_VAKANTIEGELD": true,
+                                    "VAKANTIEGELD_BIJ_IEDERE_UITBETALING": false,
+                                    "EEN_13DE_MAAND_OF_EINDEJAARSUITKERING": true
+                                },
+                                "loondienstStoptPartner": "NEE",
+                                "loondienstBedragPartner": 654.55,
+                                "loondienstUploadPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/973efd74-b80e-4369-a282-f08273fa0b03",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/973efd74-b80e-4369-a282-f08273fa0b03",
+                                            "form": "",
+                                            "name": "herp.txt",
+                                            "size": 49,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "herp-630e7d77-3e96-48aa-9774-9db2924a55db.txt",
+                                        "size": 49,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "herp.txt"
+                                    }
+                                ],
+                                "loondienstPerWeekPartner": 5.8,
+                                "loondienstPeriodePartner": "MAAND",
+                                "loondienstContractPartner": "UITZENDCONTRACT",
+                                "loondienstOnkostenPartner": 34.1,
+                                "loondienstWerkgeverPartner": "sjhbf",
+                                "loondienstReiskostenPartner": 12.4,
+                                "loondienstHeffingskortingPartner": "JA",
+                                "loondienstUrenverminderingPartner": "NEE"
+                            }
+                        ]
+                    },
+                    "grPensioenenPartner": {
+                        "hhgPensioenenPartner": [
+                            {
+                                "pensioenBedragPartner": 1.6,
+                                "pensioenPeriodePartner": "WEEK",
+                                "pensioenOverzichtPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f07c1f7d-31df-464d-8eec-e40c7d6b3021",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f07c1f7d-31df-464d-8eec-e40c7d6b3021",
+                                            "form": "",
+                                            "name": "herp.txt",
+                                            "size": 49,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "herp-48e58a9e-18b5-4596-bbb3-8e8874554909.txt",
+                                        "size": 49,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "herp.txt"
+                                    }
+                                ],
+                                "geenPensioenOverzichtPartner": false
+                            },
+                            {
+                                "pensioenBedragPartner": 2.3,
+                                "pensioenPeriodePartner": "PER_VIER_WEKEN",
+                                "pensioenOverzichtPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/eea943cb-a446-44e9-bffe-34b47caf8ffd",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/eea943cb-a446-44e9-bffe-34b47caf8ffd",
+                                            "form": "",
+                                            "name": "upload2.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload2-97122683-f055-4814-849d-eb3ea1b090dd.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload2.txt"
+                                    }
+                                ],
+                                "geenPensioenOverzichtPartner": false
+                            },
+                            {
+                                "pensioenBedragPartner": 3.1,
+                                "pensioenPeriodePartner": "MAAND",
+                                "pensioenOverzichtPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/5f7349eb-1351-4222-a4fc-bd5487317f15",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/5f7349eb-1351-4222-a4fc-bd5487317f15",
+                                            "form": "",
+                                            "name": "upload4.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload4-00d22417-e9ef-4623-a8f8-1fc21a5da6dd.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload4.txt"
+                                    }
+                                ],
+                                "geenPensioenOverzichtPartner": false
+                            },
+                            {
+                                "pensioenBedragPartner": 4.9,
+                                "pensioenPeriodePartner": "MAAND",
+                                "pensioenOverzichtPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/9e11abbd-cf9e-41c9-ab73-38fc3cbeacab",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/9e11abbd-cf9e-41c9-ab73-38fc3cbeacab",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-7ff4e1c5-65a7-4f4d-b3f1-19811ab991f5.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "geenPensioenOverzichtPartner": false
+                            },
+                            {
+                                "pensioenBedragPartner": 5.3,
+                                "pensioenPeriodePartner": "WEEK",
+                                "pensioenOverzichtPartner": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a71b6d5a-9df5-4b3c-ad53-667e0e209e1a",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a71b6d5a-9df5-4b3c-ad53-667e0e209e1a",
+                                            "form": "",
+                                            "name": "upload4.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload4-0640fc0d-1f55-4b87-a440-02f802059936.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload4.txt"
+                                    }
+                                ],
+                                "geenPensioenOverzichtPartner": false
+                            }
+                        ]
+                    },
+                    "grAlimentatiePartner": {
+                        "alimentatiePartner": "JA",
+                        "alimentatieHulpPartner": "JA",
+                        "alimentatieLBIOPartner": "NEE",
+                        "alimentatieKrijgtPartner": "NEE",
+                        "alimentatieBetaaltPartner": 343.6,
+                        "alimentatieHoeveelPartner": 4.8,
+                        "grAlimentatieLogicPartner": {
+                            "geenAlimentatiePartner": false,
+                            "alimentatieUploadPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/53d94196-1543-4778-9182-8b6da1feace7",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/53d94196-1543-4778-9182-8b6da1feace7",
+                                        "form": "",
+                                        "name": "upload1.txt",
+                                        "size": 8,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload1-7fcce3dd-b6e1-4ada-8485-41b353d7d479.txt",
+                                    "size": 8,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload1.txt"
+                                }
+                            ]
+                        }
+                    },
+                    "grUitkeringenPartner": {
+                        "grWwPartner": {
+                            "wwPartner": 5.6,
+                            "geenWwPartner": false,
+                            "wwPeriodePartner": "MAAND",
+                            "wwOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/d50158c5-1143-4f46-842e-487ed6feac32",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/d50158c5-1143-4f46-842e-487ed6feac32",
+                                        "form": "",
+                                        "name": "upload5.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload5-db158639-0af8-44d4-9358-bda5372b405e.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload5.txt"
+                                }
+                            ]
+                        },
+                        "grAnwPartner": {
+                            "anwPartner": 674656765.9,
+                            "geenAnwPartner": false,
+                            "anwPeriodePartner": "WEEK",
+                            "anwOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a5910447-4560-451e-a54b-1aa6f9f82142",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/a5910447-4560-451e-a54b-1aa6f9f82142",
+                                        "form": "",
+                                        "name": "upload1.txt",
+                                        "size": 8,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload1-82468dca-0725-47d1-953b-5e577d76fd33.txt",
+                                    "size": 8,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload1.txt"
+                                }
+                            ]
+                        },
+                        "grAowPartner": {
+                            "aowPartner": 54.4,
+                            "aowPeriodePartner": "WEEK",
+                            "aowOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/62d4479c-1048-498f-8a7e-6c8b5c154a9b",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/62d4479c-1048-498f-8a7e-6c8b5c154a9b",
+                                        "form": "",
+                                        "name": "upload1.txt",
+                                        "size": 8,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload1-afeca116-ad83-43fd-a0f0-8e003f4ff9c9.txt",
+                                    "size": 8,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload1.txt"
+                                }
+                            ],
+                            "geenUitkeringsOverzichtPartner": false
+                        },
+                        "grWaoPartner": {
+                            "waoPartner": 3.1,
+                            "geenWaoPartner": false,
+                            "waoPeriodePartner": "MAAND",
+                            "waoOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/725416d0-a641-464f-bc59-6d96a17c6c0f",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/725416d0-a641-464f-bc59-6d96a17c6c0f",
+                                        "form": "",
+                                        "name": "upload4.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload4-e50b3f30-f67d-450b-9492-bc341c698ed0.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload4.txt"
+                                }
+                            ]
+                        },
+                        "grWiaPartner": {
+                            "wiaPartner": 6.5,
+                            "geenWiaPartner": false,
+                            "wiaPeriodePartner": "WEEK",
+                            "wiaOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/b8928cfb-9836-4662-9022-b9767d0c8f73",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/b8928cfb-9836-4662-9022-b9767d0c8f73",
+                                        "form": "",
+                                        "name": "upload5.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload5-369c3161-12d4-4ffb-b463-6158b3bbcbeb.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload5.txt"
+                                }
+                            ]
+                        },
+                        "grWajongPartner": {
+                            "wajongPartner": 3.3,
+                            "geenWajongPartner": false,
+                            "wajongPeriodePartner": "PER_VIER_WEKEN",
+                            "wajongOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f80ee300-ffd4-4429-9008-be41b54d1054",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f80ee300-ffd4-4429-9008-be41b54d1054",
+                                        "form": "",
+                                        "name": "upload2.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload2-c1fdb470-57a2-4a33-8640-a29a68f19605.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload2.txt"
+                                }
+                            ]
+                        },
+                        "grBijstandPartner": {
+                            "geenBijstandPartner": false,
+                            "bijstandPartnerBedrag": 7866.7,
+                            "bijstandPeriodePartner": "WEEK",
+                            "bijstandOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/3e0bb466-6b47-4950-b849-68e2d591286d",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/3e0bb466-6b47-4950-b849-68e2d591286d",
+                                        "form": "",
+                                        "name": "upload2.txt",
+                                        "size": 7,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "upload2-a5cf3e2e-3896-4b5d-bc81-5c72eaa8893f.txt",
+                                    "size": 7,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "upload2.txt"
+                                }
+                            ]
+                        },
+                        "grZiektewetPartner": {
+                            "ziektewetPartner": 78.6,
+                            "geenZiektewetPartner": false,
+                            "ziektewetPeriodePartner": "PER_VIER_WEKEN",
+                            "ziektewetOverzichtPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/5149eaa1-b9ef-4366-afce-95131d04cabd",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/5149eaa1-b9ef-4366-afce-95131d04cabd",
+                                        "form": "",
+                                        "name": "herp.txt",
+                                        "size": 49,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "herp-6afcefff-c134-4720-863d-36dbef22ff7a.txt",
+                                    "size": 49,
+                                    "type": "text/plain",
+                                    "storage": "url",
+                                    "originalName": "herp.txt"
+                                }
+                            ]
+                        },
+                        "uitkeringenPartner": {
+                            "WW": true,
+                            "ANW": true,
+                            "AOW": true,
+                            "WAO": true,
+                            "WIA": true,
+                            "WAJONG": true,
+                            "BIJSTAND": true,
+                            "ZIEKTEWET": true
+                        }
+                    },
+                    "heeftPartnerInkomsten": "JA",
+                    "soortenInkomstenPartner": {
+                        "PENSIOEN": true,
+                        "UITKERING": true,
+                        "LOONDIENST": true,
+                        "ALIMENTATIE": true,
+                        "HEFFINGSKORTING": true,
+                        "OVERIGE_INKOMSTEN": true,
+                        "INKOMSTEN_UIT_ONDERHUUR": true,
+                        "INKOMSTEN_UIT_ONDERNEMING": true,
+                        "INKOMEN_UIT_HET_BUITENLAND": true
+                    },
+                    "grOverigeInkomstenPartner": {
+                        "overigeBedragPartner": 456.8,
+                        "overigeUploadPartner": [
+                            {
+                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e55109b3-a02b-4632-afac-8075ffd2dd1e",
+                                "data": {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e55109b3-a02b-4632-afac-8075ffd2dd1e",
+                                    "form": "",
+                                    "name": "upload2.txt",
+                                    "size": 7,
+                                    "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                    "project": ""
+                                },
+                                "name": "upload2-1dc75ff7-92b7-4693-8a3f-a58ed9c7114f.txt",
+                                "size": 7,
+                                "type": "text/plain",
+                                "storage": "url",
+                                "originalName": "upload2.txt"
+                            }
+                        ],
+                        "geenOverigeInkomstenPartner": false
+                    },
+                    "grHeffingskortingenPartner": {
+                        "heffingskortingSoortPartner": {
+                            "ALGEMENE_HEFFINGSKORTING": false,
+                            "INKOMENSAFHANKELIJKE_COMBINATIEKORTING": true
+                        },
+                        "heffingskortingBedragTotaalPartner": 45.2
+                    },
+                    "grInkomenBuitenlandPartner": {
+                        "inkomenBuitenlandBedragPartner": 4.2,
+                        "inkomenBuitenlandPeriodePartner": "WEEK",
+                        "grUploadInkomenBuitenlandPartner": {
+                            "inkomenBuitenlandUploadPartner": [
+                                {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/37cd75cd-5a69-4bda-b002-30932b64e6c1",
+                                    "data": {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/37cd75cd-5a69-4bda-b002-30932b64e6c1",
+                                        "form": "",
+                                        "name": "id_card.jpg",
+                                        "size": 30366,
+                                        "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                        "project": ""
+                                    },
+                                    "name": "id_card-f1eb43e8-9250-41dc-9dec-1ae400d59d0b.jpg",
+                                    "size": 30366,
+                                    "type": "image/jpeg",
+                                    "storage": "url",
+                                    "originalName": "id_card.jpg"
+                                }
+                            ],
+                            "geenInkomensBewijsBuitenlandPartner": false
+                        }
+                    },
+                    "grInkomstenOnderhuurPartner": {
+                        "geenContractUploadenPartner": false,
+                        "inkomstenOnderhuurBedragPartner": 34.8,
+                        "inkomstenOnderhuurUploadPartner": [
+                            {
+                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/bd83eef6-0122-4323-8cbb-a5be7bf9cad7",
+                                "data": {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/bd83eef6-0122-4323-8cbb-a5be7bf9cad7",
+                                    "form": "",
+                                    "name": "upload2.txt",
+                                    "size": 7,
+                                    "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                    "project": ""
+                                },
+                                "name": "upload2-bb3ee3b5-0e07-4cfd-b267-ff3d8828435b.txt",
+                                "size": 7,
+                                "type": "text/plain",
+                                "storage": "url",
+                                "originalName": "upload2.txt"
+                            }
+                        ]
+                    },
+                    "grInkomstenOndernemingPartner": {
+                        "kvkPartner": "90001745",
+                        "inkomenOndernemingPartner": 454.7
+                    }
+                },
+                "alo-reden-aanvraag": {
+                    "grIoaw": {
+                        "geenRechtMeerWw": "NEE",
+                        "geenRechtMeerWga": "NEE",
+                        "gedeeltelijkArbeidsongeschikt": "NEE"
+                    },
+                    "grIngangsdatum": {
+                        "redenLaat": "JA",
+                        "welkeredenlaat": "ANDERE_REDEN",
+                        "waaromLaatAlgemeen": "Dat mocht niet van mijn partner"
+                    },
+                    "beeindigingRelatie": {
+                        "hoeBetaalt": "Ik probeer Duitse schlager muziek te zingen op het plein en daar krijg ik geld voor ",
+                        "sindWanneer": "2025-01-09",
+                        "wasGetrouwd": "JA",
+                        "afsprakenBijdragen": "NEE"
+                    },
+                    "waaromBijstandsuitkering": "WIJZIGING_GEZINSSITUATIE",
+                    "grWijzigingGezinssituatie": {
+                        "watGewijzigd": "RELATIE_VERBROKEN"
+                    }
+                },
+                "alo-uw-woonsituatie": {
+                    "hoeWoontU": "VERBLIJF_ZORGINSTELLING",
+                    "grZorginstelling": {
+                        "naamZorginstelling": "FEBO",
+                        "stadZorginstelling": "Amsterdam",
+                        "postcodeZorginstelling": "1031 AE",
+                        "huisletterZorginstelling": "",
+                        "huisnummerZorginstelling": 7,
+                        "straatnaamZorginstelling": "Gentiaanstraat",
+                        "nummerToevoegingZorginstelling": ""
+                    }
+                },
+                "alo-uw-beschikbaarheid": {
+                    "grBeschikbaarheid": {
+                        "onbetaald": "JA",
+                        "onbetaaldWerk": "bankhangen",
+                        "beschikbaarheid": 0,
+                        "geenBeschikbaarheid": "Ik heb geen zin ",
+                        "organisatieOnbetaald": "thuis"
+                    },
+                    "grBeschikbaarheidPartner": {
+                        "onbetaaldPartner": "JA",
+                        "onbetaaldwerkPartner": "Thuis schoonmaken",
+                        "beschikbaarheidPartner": 0,
+                        "geenBeschikbaarheidPartner": "Die heeft ook geen zin",
+                        "organisatieOnbetaaldPartner": "Ook thuis"
+                    }
+                },
+                "alo-gezinssamenstelling": {
+                    "partnerWoontBijU": "JA",
+                    "grGegevensPartner": {
+                        "bsnPartner": "111111110",
+                        "grAdresPartner": {
+                            "plaatsPartner": "Bilthoven",
+                            "straatPartner": "Frans Halslaan",
+                            "postcodePartner": "3723 EA",
+                            "huisletterPartner": "",
+                            "huisnummerPartner": 27,
+                            "nummerToevoegingPartner": ""
+                        },
+                        "geboortePartner": "1585-01-09",
+                        "achternaamPartner": "Frikandel",
+                        "voorletterPartner": "F",
+                        "voorvoegselPartner": "van",
+                        "zelfdeAdresPartner": "ANDER_ADRES",
+                        "nationaliteitPartner": "EU_BURGER",
+                        "geenNederlanderPartner": "JA"
+                    },
+                    "grGegevensKinderen": {
+                        "hhgGegevensKinderen": [
+                            {
+                                "voornaamKind": "Kip",
+                                "opleidingKind": "HBO",
+                                "achternaamKind": "Nugget",
+                                "voorletterKind": "K",
+                                "voorvoegselKind": "van",
+                                "geboortedatumKind": "1650-01-13",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "Nassie",
+                                "opleidingKind": "MBO",
+                                "achternaamKind": "Schijf",
+                                "voorletterKind": "N",
+                                "voorvoegselKind": "van der",
+                                "geboortedatumKind": "1250-01-14",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "Loempia",
+                                "opleidingKind": "GEEN_OPLEIDING",
+                                "achternaamKind": "Rol",
+                                "voorletterKind": "L",
+                                "voorvoegselKind": "van 't",
+                                "geboortedatumKind": "2025-01-02",
+                                "krijgtKinderbijslag": "NEE"
+                            },
+                            {
+                                "voornaamKind": "Saté",
+                                "opleidingKind": "MBO",
+                                "achternaamKind": "Speciaal",
+                                "voorletterKind": "S",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "2025-01-03",
+                                "krijgtKinderbijslag": "NEE"
+                            },
+                            {
+                                "voornaamKind": "Roodje",
+                                "opleidingKind": "GEEN_OPLEIDING",
+                                "achternaamKind": "Bal",
+                                "voorletterKind": "B",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "1995-01-12",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "Izza",
+                                "opleidingKind": "HBO",
+                                "achternaamKind": "Calzone",
+                                "voorletterKind": "P",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "2025-01-08",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "Asta",
+                                "opleidingKind": "MBO",
+                                "achternaamKind": "Vongole",
+                                "voorletterKind": "P",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "2025-01-02",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "Atat",
+                                "opleidingKind": "WO",
+                                "achternaamKind": "Met",
+                                "voorletterKind": "P",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "2024-12-31",
+                                "krijgtKinderbijslag": "JA"
+                            },
+                            {
+                                "voornaamKind": "ortie",
+                                "opleidingKind": "HBO",
+                                "achternaamKind": "vlammetjes",
+                                "voorletterKind": "P",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "1850-01-10",
+                                "krijgtKinderbijslag": "NEE"
+                            },
+                            {
+                                "voornaamKind": "Izza",
+                                "opleidingKind": "MBO",
+                                "achternaamKind": "Americano",
+                                "voorletterKind": "P",
+                                "voorvoegselKind": "",
+                                "geboortedatumKind": "2025-01-09",
+                                "krijgtKinderbijslag": "JA"
+                            }
+                        ]
+                    },
+                    "thuiswonendeKinderen": "JA"
+                },
+                "alo-aanvullende-gegevens": {
+                    "lieverPost": false,
+                    "grWoonsituatie": {
+                        "woonsituatie": "ANDER_ADRES"
+                    },
+                    "grAdresVerblijf": {
+                        "plaatsVerblijf": "'s-Gravenhage",
+                        "straatVerblijf": "Spui",
+                        "postcodeVerblijf": "2511 BT",
+                        "huisletterVerblijf": "",
+                        "huisnummerVerblijf": 70,
+                        "nummerToevoegingVerblijf": "",
+                        "toelichtingadresVerblijf": "Daarom niet"
+                    },
+                    "grNationaliteit": {
+                        "nationaliteitBezit": "GELDIGE_VERBLIJFSVERGUNNING",
+                        "geenNederlandseNationaliteit": "JA"
+                    },
+                    "grContactAanvraag": {
+                        "hulpAanvraag": "JA",
+                        "grContactHulp": {
+                            "naamHulp": "Kees Kroket",
+                            "relatieHulp": "KENNIS",
+                            "telefoonHulp": "0689453166"
+                        }
+                    },
+                    "grNieuweContactgegevens": {
+                        "geenEmail": false,
+                        "emailAdres": "test@test.nl",
+                        "geenTelefoon": false,
+                        "telefoonnummer": "0689453143"
+                    }
+                },
+                "alo-uw-inkomsten-overzicht": {},
+                "alo-bezittingen-en-schulden": {
+                    "grCrypto": {
+                        "hhgCrypto": [
+                            {
+                                "uploadCrypto": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/002fd815-1964-497d-9813-77ed6ff7ae67",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/002fd815-1964-497d-9813-77ed6ff7ae67",
+                                            "form": "",
+                                            "name": "island.jpg",
+                                            "size": 118903,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "island-c4f65c01-1334-4a33-b698-c045af72157a.jpg",
+                                        "size": 118903,
+                                        "type": "image/jpeg",
+                                        "storage": "url",
+                                        "originalName": "island.jpg"
+                                    }
+                                ],
+                                "waardeCrypto": 345.5,
+                                "geenCryptoUpload": false
+                            },
+                            {
+                                "waardeCrypto": 345.5,
+                                "geenCryptoUpload": true
+                            },
+                            {
+                                "uploadCrypto": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/ff34f670-1591-42ab-a617-e1caa5038902",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/ff34f670-1591-42ab-a617-e1caa5038902",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-8ef3f731-0291-458c-a6fa-1ae7ddc682a5.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "waardeCrypto": 6786.9,
+                                "geenCryptoUpload": false
+                            },
+                            {
+                                "uploadCrypto": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/34dff21c-bca5-4a48-b49b-031320af9830",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/34dff21c-bca5-4a48-b49b-031320af9830",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-c814069e-d232-48ff-84b9-42c9c137037e.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "waardeCrypto": 6786.9,
+                                "geenCryptoUpload": false
+                            }
+                        ]
+                    },
+                    "grCaravan": {
+                        "hhgCaravan": [
+                            {
+                                "waardeCaravan": 23.5
+                            },
+                            {
+                                "waardeCaravan": 234.6
+                            },
+                            {
+                                "waardeCaravan": 45.7
+                            },
+                            {
+                                "waardeCaravan": 454.8
+                            },
+                            {
+                                "waardeCaravan": 454.9
+                            }
+                        ]
+                    },
+                    "grContant": {
+                        "waardeContant": 10.4
+                    },
+                    "grAandelen": {
+                        "hhgAannemelijkBelang": [
+                            {
+                                "waardeAandelen": 6577.5,
+                                "geenAandelenUpload": true
+                            },
+                            {
+                                "waardeAandelen": 232.6,
+                                "uploadDagwaarde": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f2705e93-8f51-4417-a8b2-ab84fa3a65e3",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/f2705e93-8f51-4417-a8b2-ab84fa3a65e3",
+                                            "form": "",
+                                            "name": "upload2.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload2-bfed17eb-aa58-46ef-b6bf-d7f7d8db374c.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload2.txt"
+                                    }
+                                ],
+                                "geenAandelenUpload": false
+                            },
+                            {
+                                "waardeAandelen": 67876.5,
+                                "uploadDagwaarde": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/0fdffc45-9eae-4e4e-943c-eb1957b33a06",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/0fdffc45-9eae-4e4e-943c-eb1957b33a06",
+                                            "form": "",
+                                            "name": "upload3.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload3-81da2d3a-f6f6-4829-8360-c6173132c456.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload3.txt"
+                                    }
+                                ],
+                                "geenAandelenUpload": false
+                            }
+                        ]
+                    },
+                    "grSchulden": {
+                        "hhgSchulden": [
+                            {
+                                "bijWieSchuld": "Kees",
+                                "uploadSchuld": [
+                                    {
+                                        "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/876fe675-be51-4325-af93-bd77bd3589d4",
+                                        "data": {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/876fe675-be51-4325-af93-bd77bd3589d4",
+                                            "form": "",
+                                            "name": "upload4.txt",
+                                            "size": 7,
+                                            "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                            "project": ""
+                                        },
+                                        "name": "upload4-41c524ad-baa6-478f-89ac-b4f5b71b52b9.txt",
+                                        "size": 7,
+                                        "type": "text/plain",
+                                        "storage": "url",
+                                        "originalName": "upload4.txt"
+                                    }
+                                ],
+                                "waardeSchuld": 150000000000.7,
+                                "geenSchuldUpload": false
+                            },
+                            {
+                                "bijWieSchuld": "Jan",
+                                "waardeSchuld": 10.4,
+                                "geenSchuldUpload": true
+                            }
+                        ]
+                    },
+                    "grVaartuig": {
+                        "hhgVaartuig": [
+                            {
+                                "waardeVaartuig": 565.5
+                            },
+                            {
+                                "waardeVaartuig": 6765.6
+                            },
+                            {
+                                "waardeVaartuig": 3543.8
+                            },
+                            {
+                                "waardeVaartuig": 556.9
+                            },
+                            {
+                                "waardeVaartuig": 576.1
+                            },
+                            {
+                                "waardeVaartuig": 5756.2
+                            },
+                            {
+                                "waardeVaartuig": 234353.3
+                            },
+                            {
+                                "waardeVaartuig": 3453.4
+                            },
+                            {
+                                "waardeVaartuig": 565.5
+                            },
+                            {
+                                "waardeVaartuig": 2.6
+                            }
+                        ]
+                    },
+                    "grGrondbezit": {
+                        "hhgGrondbezit": [
+                            {
+                                "grondBezitWaarde": 150000.4
+                            },
+                            {
+                                "grondBezitWaarde": 15000000.55
+                            },
+                            {
+                                "grondBezitWaarde": 200000.12
+                            },
+                            {
+                                "grondBezitWaarde": 5613.54
+                            },
+                            {
+                                "grondBezitWaarde": 6453.65
+                            },
+                            {
+                                "grondBezitWaarde": 645461.77
+                            },
+                            {
+                                "grondBezitWaarde": 654246.21
+                            },
+                            {
+                                "grondBezitWaarde": 685.98
+                            },
+                            {
+                                "grondBezitWaarde": 1.1
+                            },
+                            {
+                                "grondBezitWaarde": 2.3
+                            }
+                        ]
+                    },
+                    "grKoopwoning": {
+                        "wozWaarde": 15000000.4,
+                        "uploadHypotheek": [
+                            {
+                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/473bdcdb-106f-4166-a282-a6ff5c003bb2",
+                                "data": {
+                                    "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/473bdcdb-106f-4166-a282-a6ff5c003bb2",
+                                    "form": "",
+                                    "name": "upload2.txt",
+                                    "size": 7,
+                                    "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                    "project": ""
+                                },
+                                "name": "upload2-6e4be6ad-395d-4654-96f5-ebbdc0b15c58.txt",
+                                "size": 7,
+                                "type": "text/plain",
+                                "storage": "url",
+                                "originalName": "upload2.txt"
+                            }
+                        ],
+                        "beleggingsGekoppeld": "NEE",
+                        "geenHypotheekUpload": false,
+                        "restHypotheekSchuld": 14000000.5
+                    },
+                    "grRekeningen": {
+                        "grLogicaBank": {
+                            "hhgVoegRekeningToe": [
+                                {
+                                    "prive": "NL18RABO0123459876",
+                                    "hoeveelGeld": 34.7,
+                                    "typeRekening": "NEDERLANDSE_PRIVE_REKENING",
+                                    "uploadAfschrift": [
+                                        {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/81c0d8fc-0e1d-419b-b540-0c34f13e947a",
+                                            "data": {
+                                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/81c0d8fc-0e1d-419b-b540-0c34f13e947a",
+                                                "form": "",
+                                                "name": "upload1.txt",
+                                                "size": 8,
+                                                "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                                "project": ""
+                                            },
+                                            "name": "upload1-c307b519-99a3-4dc4-899d-6c5cad7e7ea9.txt",
+                                            "size": 8,
+                                            "type": "text/plain",
+                                            "storage": "url",
+                                            "originalName": "upload1.txt"
+                                        }
+                                    ],
+                                    "geenRekeningUploaden": false
+                                },
+                                {
+                                    "zakelijk": "NL98INGB0003856625",
+                                    "hoeveelGeld": 34.5,
+                                    "typeRekening": "NEDERLANDSE_ZAKELIJKE_REKENING",
+                                    "geenRekeningUploaden": true
+                                },
+                                {
+                                    "hoeveelGeld": 67.6,
+                                    "typeRekening": "BUITENLANDSE_PRIVE_REKENING",
+                                    "priveBuitenland": "NL98ABNA0416961347",
+                                    "uploadAfschrift": [
+                                        {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e037b538-beec-480b-b27f-e64bb6bf8ba5",
+                                            "data": {
+                                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/e037b538-beec-480b-b27f-e64bb6bf8ba5",
+                                                "form": "",
+                                                "name": "upload3.txt",
+                                                "size": 7,
+                                                "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                                "project": ""
+                                            },
+                                            "name": "upload3-a8302ed1-16fe-4964-8ed7-4582027a20d9.txt",
+                                            "size": 7,
+                                            "type": "text/plain",
+                                            "storage": "url",
+                                            "originalName": "upload3.txt"
+                                        }
+                                    ],
+                                    "geenRekeningUploaden": false
+                                },
+                                {
+                                    "prive": "NL18RABO0123459876",
+                                    "hoeveelGeld": 676.8,
+                                    "typeRekening": "NEDERLANDSE_PRIVE_REKENING",
+                                    "geenRekeningUploaden": true
+                                },
+                                {
+                                    "hoeveelGeld": 5462.5,
+                                    "typeRekening": "BUITENLANDSE_ZAKELIJKE_REKENING",
+                                    "uploadAfschrift": [
+                                        {
+                                            "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/1812c0fa-14ad-4f10-8ea4-36b91fd84123",
+                                            "data": {
+                                                "url": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/submissions/files/1812c0fa-14ad-4f10-8ea4-36b91fd84123",
+                                                "form": "",
+                                                "name": "upload4.txt",
+                                                "size": 7,
+                                                "baseUrl": "https://openformulieren-zgw.acc.denhaag.nl/api/v2/",
+                                                "project": ""
+                                            },
+                                            "name": "upload4-9c668d4c-46aa-47c5-9f7c-1be02d49e7f5.txt",
+                                            "size": 7,
+                                            "type": "text/plain",
+                                            "storage": "url",
+                                            "originalName": "upload4.txt"
+                                        }
+                                    ],
+                                    "zakelijkBuitenland": "NL97BOFA0266546412",
+                                    "geenRekeningUploaden": false
+                                }
+                            ]
+                        },
+                        "geenBankrekening": false
+                    },
+                    "grUwVermogen": {
+                        "welkVermogen": {
+                            "CRYPTO": true,
+                            "CARAVAN": true,
+                            "VAARTUIG": true,
+                            "CONTANTEN": true,
+                            "KOOPWONING": true,
+                            "MOTORVOERTUIG": true,
+                            "EEN_STUK_GROND": true,
+                            "OBLIGATIES_AANDELEN": true,
+                            "BANK_EN_SPAARREKENINGEN": true
+                        }
+                    },
+                    "heeftSchulden": "JA",
+                    "grMotorvoertuigen": {
+                        "hhgMotorvoertuigen": [
+                            {
+                                "kenteken": "47-aa-89",
+                                "dagwaarde": 15000.4
+                            },
+                            {
+                                "kenteken": "48-aa-56",
+                                "dagwaarde": 2.1
+                            },
+                            {
+                                "kenteken": "49-aa-78",
+                                "dagwaarde": 1.2
+                            },
+                            {
+                                "kenteken": "50-aa-01",
+                                "dagwaarde": 56.3
+                            },
+                            {
+                                "kenteken": "44-aa-33",
+                                "dagwaarde": 3.4
+                            }
+                        ]
+                    }
+                },
+                "alo-bezittingen-schulden-overzicht": {}
+            },
+            "type": "Verzoek AB DCM",
+            "attachments": [],
+            "language_code": "nl",
+            "submission_id": "12345-abcde-67890",
+            "public_reference": "OF-ZFG75Z"
+        },
+        "startAt": "2025-03-20",
+        "registrationAt": "2025-03-20"
+    }
+}
