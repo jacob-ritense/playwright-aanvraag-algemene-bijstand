@@ -43,9 +43,11 @@ export async function createVerzoek(achternaam: string, apiTestRequestFile: stri
         const data = body.record.data.data;
         
         // Update main applicant's last name
-        if (data['uw-gegevens']?.digid?.persoongegevensPrefill) {
-            data['uw-gegevens'].digid.persoongegevensPrefill.achternaamPrefill = achternaam;
+        if (data['uw-gegevens']?.naw?.grPersoongegevens) {
+            data['uw-gegevens'].naw.grPersoongegevens.achternaam = achternaam;
             console.log('Updated main applicant last name to:', achternaam);
+        } else {
+            console.warn('Could not find grPersoongegevens structure to update last name. Path checked: data[\'uw-gegevens\']?.naw?.grPersoongegevens');
         }
 
         // Update company name if it exists
