@@ -761,7 +761,7 @@ function generateInputValue(label: string): string {
 
 async function completeTask(page: Page) {
   // Look for and click any confirm/continue buttons
-  const buttonTexts = ['Bevestigen', 'Doorgaan', 'Opslaan', 'Afronden', 'Volgende'];
+  const buttonTexts = ['Bevestigen', 'Doorgaan', 'Opslaan', 'Afronden', 'Volgende', 'De dienst is opgevoerd in Socrates'];
   
   for (const text of buttonTexts) {
     const button = page.getByRole('button', { name: text });
