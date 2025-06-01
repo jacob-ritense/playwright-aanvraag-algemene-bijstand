@@ -10,7 +10,7 @@ const passwordLocal = process.env.PASSWORD_LOCAL ?? '';
 const apiTestRequestFile = process.env.API_TEST_REQUEST_FILE ?? '';
 const apiRequestConfigFile = process.env.API_REQUEST_CONFIG_FILE ?? '';
 
-test.describe('Algemene Bijstand Aanvraag Flow', () => {
+test.describe('Algemene bijstand (DCM) Flow', () => {
   test('complete algemene-bijstand-aanvraag process', async ({page}) => {
     test.setTimeout(300000); // 5 minutes timeout for complete flow
 
@@ -46,7 +46,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
     });
 
     // 2. Login and Navigation
-    await test.step('Login and navigate to Algemene Bijstand aanvraag', async () => {
+    await test.step('Login and navigate to Algemene bijstand (DCM)', async () => {
       try {
         if (infra === "alo-dev" || infra === "local") {
           await loginLocal(page);
@@ -55,7 +55,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
 
         await initializeApplication(page);
         await navigateToAlgemeneBijstandAanvraag(page);
-        console.log('Successfully navigated to Algemene Bijstand aanvraag');
+        console.log('Successfully navigated to Algemene bijstand (DCM)');
       } catch (error) {
         console.error('Failed during login/navigation:', error);
         throw error;
@@ -97,6 +97,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
     });
 
     // 5. Complete Subsequent Tasks
+    /* // Dynamic task processing removed as per user request
     await test.step('Process all remaining tasks', async () => {
       try {
         await processAllTasks(page);
@@ -106,6 +107,7 @@ test.describe('Algemene Bijstand Aanvraag Flow', () => {
         throw error;
       }
     });
+    */
   });
 });
 
@@ -221,7 +223,7 @@ async function loginLocal(page: Page) {
 }
 
 async function navigateToAlgemeneBijstandAanvraag(page: Page) {
-  console.log('Navigating to Algemene Bijstand aanvraag section...');
+  console.log('Navigating to Algemene bijstand (DCM) section...');
   try {
     // Wait for initial page load
     await page.waitForLoadState('networkidle', { timeout: 30000 });
@@ -241,8 +243,8 @@ async function navigateToAlgemeneBijstandAanvraag(page: Page) {
     await page.waitForTimeout(1000);
     await dossierButton.click();
     
-    console.log('Clicked Dossiers menu, waiting for Algemene Bijstand aanvraag link...');
-    // Wait for menu expansion and Algemene Bijstand aanvraag link with retry
+    console.log('Clicked Dossiers menu, waiting for Algemene bijstand (DCM) link...');
+    // Wait for menu expansion and Algemene bijstand (DCM) link with retry
     let maxAttempts = 3;
     let attempts = 0;
     while (attempts < maxAttempts) {
@@ -253,7 +255,7 @@ async function navigateToAlgemeneBijstandAanvraag(page: Page) {
         break;
       } catch (error) {
         attempts++;
-        console.log(`Attempt ${attempts} to find Algemene Bijstand aanvraag link failed, retrying...`);
+        console.log(`Attempt ${attempts} to find Algemene bijstand (DCM) link failed, retrying...`);
         if (attempts < maxAttempts) {
           // Try clicking the menu again
           await dossierButton.click();
@@ -264,7 +266,7 @@ async function navigateToAlgemeneBijstandAanvraag(page: Page) {
       }
     }
     
-    console.log('Clicked Algemene Bijstand aanvraag, waiting for Alle dossiers tab...');
+    console.log('Clicked Algemene bijstand (DCM), waiting for Alle dossiers tab...');
     // Wait for the page to settle after navigation
     await page.waitForLoadState('networkidle', { timeout: 30000 });
     
@@ -632,79 +634,21 @@ async function completeSpecificTask(page: Page, taskName: string) {
   }
 }
 
-async function processAllTasks(page: Page) {
-  console.log('Starting to process all remaining tasks...');
-  let hasMoreTasks = true;
-  const maxAttempts = 20;
-  let attempts = 0;
-  let tasksProcessed = 0;
-
-  while (hasMoreTasks && attempts < maxAttempts) {
-    attempts++;
-    console.log(`Processing task attempt ${attempts}`);
-
-    try {
-      // Wait for task list to be stable
-      await page.waitForTimeout(2000);
-      
-      // Check for any available tasks
-      const taskButtons = await page.getByRole('button').filter({
-        hasText: /Doorgaan|Afronden|Volgende/
-      }).all();
-
-      if (taskButtons.length === 0) {
-        console.log('No more tasks found');
-        hasMoreTasks = false;
-        continue;
-      }
-
-      // Process each available task
-      for (const taskButton of taskButtons) {
-        const taskName = await taskButton.textContent();
-        console.log(`Processing task with action: ${taskName}`);
-
-        // Click the task button
-        await taskButton.click();
-        await page.waitForLoadState('networkidle');
-        
-        // Handle form inputs
-        await fillFormInputs(page);
-        
-        // Complete the task
-        await completeTask(page);
-        
-        tasksProcessed++;
-        console.log(`Task completed. Total tasks processed: ${tasksProcessed}`);
-      }
-
-      // Refresh the page to see new tasks
-      await page.reload();
-      await page.waitForLoadState('networkidle');
-
-    } catch (error) {
-      console.error(`Error processing task ${attempts}:`, error);
-      attempts++;
-      
-      // Take a screenshot for debugging
-      try {
-        await page.screenshot({ path: `task-error-${attempts}.png`, fullPage: true });
-        console.log(`Error screenshot saved as task-error-${attempts}.png`);
-      } catch (screenshotError) {
-        console.error('Failed to save error screenshot:', screenshotError);
-      }
-      
-      // Try to recover by refreshing the page
-      await page.reload();
-      await page.waitForLoadState('networkidle');
-    }
+async function initializeApplication(page: Page) {
+  console.log('Initializing application...');
+  try {
+    console.log('Current URL before waitForAngular:', page.url()); // Log current URL
+    await page.screenshot({ path: 'debug-before-angular-wait.png' }); // Take a screenshot
+    console.log('Screenshot taken as debug-before-angular-wait.png');
+    await waitForAngular(page);
+    console.log('Angular application initialized');
+  } catch (error) {
+    console.error('Failed to initialize application:', error);
+    // The screenshot 'angular-wait-failure.png' is already taken inside waitForAngular on failure.
+    // Log the URL at the point of catching the error within initializeApplication
+    console.error('URL when error caught in initializeApplication:', page.url());
+    throw new Error(`Application initialization failed: ${error.message}`);
   }
-
-  if (attempts >= maxAttempts) {
-    console.warn(`Reached maximum number of task processing attempts (${maxAttempts})`);
-    throw new Error('Maximum task processing attempts reached');
-  }
-
-  console.log(`Completed processing all tasks. Total tasks processed: ${tasksProcessed}`);
 }
 
 async function fillFormInputs(page: Page) {
@@ -774,22 +718,5 @@ async function completeTask(page: Page) {
   }
   
   throw new Error('No completion button found for task');
-}
-
-async function initializeApplication(page: Page) {
-  console.log('Initializing application...');
-  try {
-    console.log('Current URL before waitForAngular:', page.url()); // Log current URL
-    await page.screenshot({ path: 'debug-before-angular-wait.png' }); // Take a screenshot
-    console.log('Screenshot taken as debug-before-angular-wait.png');
-    await waitForAngular(page);
-    console.log('Angular application initialized');
-  } catch (error) {
-    console.error('Failed to initialize application:', error);
-    // The screenshot 'angular-wait-failure.png' is already taken inside waitForAngular on failure.
-    // Log the URL at the point of catching the error within initializeApplication
-    console.error('URL when error caught in initializeApplication:', page.url());
-    throw new Error(`Application initialization failed: ${error.message}`);
-  }
 }
 
