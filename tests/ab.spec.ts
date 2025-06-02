@@ -96,18 +96,181 @@ test.describe('Algemene bijstand (DCM) Flow', () => {
       }
     });
 
-    // 5. Complete Subsequent Tasks
-    /* // Dynamic task processing removed as per user request
-    await test.step('Process all remaining tasks', async () => {
+    // 5. Wait for next task to appear
+    await test.step('Wait for next task and refresh', async () => {
+      console.log('Waiting 20 seconds for new tasks to appear...');
+      await page.waitForTimeout(20000);
+      console.log('Refreshing page to load new tasks...');
+      await page.reload({ waitUntil: 'networkidle', timeout: 30000 });
+      console.log('Page refreshed.');
+    });
+
+    // 6. Process "Overwegen uitzetten informatieverzoek" task
+    await test.step('Process "Overwegen uitzetten informatieverzoek" task', async () => {
       try {
-        await processAllTasks(page);
-        console.log('Successfully completed all tasks');
+        const taskName = "Overwegen uitzetten informatieverzoek";
+        console.log(`Looking for task: "${taskName}"`);
+
+        // Wait for the task to appear in the panel
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 }); // Wait up to 30s for the task to be visible
+        console.log(`Task "${taskName}" is visible.`);
+
+        // Click the task to open/activate it
+        console.log(`Clicking task: "${taskName}"`);
+        await taskElement.click();
+
+        // Wait for any navigation or modal to settle after clicking the task
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(2000); // Additional small delay for UI updates
+
+        console.log(`Successfully clicked and opened task "${taskName}".`);
+        
+        // Interact with the form that appears after clicking the task
+        console.log('Clicking "Nee" radio button...');
+        await page.getByRole('radio', { name: 'Nee' }).check();
+
+        console.log('Clicking "Indienen" button...');
+        await page.getByRole('button', { name: 'Indienen' }).click();
+
+        // Wait for page to settle after submission
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log('"Nee" selected and form submitted.');
+
       } catch (error) {
-        console.error('Failed during task processing:', error);
+        console.error('Failed during "Overwegen uitzetten informatieverzoek" task processing:', error);
+        // Take a screenshot for debugging
+        try {
+          await page.screenshot({ path: 'overwegen-uitzetten-infoverzoek-error.png', fullPage: true });
+          console.log('Screenshot saved as overwegen-uitzetten-infoverzoek-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
         throw error;
       }
     });
-    */
+
+    // 7. Process "Overwegen inzet handhaving" task
+    await test.step('Process "Overwegen inzet handhaving" task', async () => {
+      try {
+        const taskName = "Overwegen inzet handhaving";
+        console.log(`Looking for task: "${taskName}"`);
+
+        // Wait for the task to appear in the panel and click it
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        console.log(`Task "${taskName}" is visible.`);
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for UI to update after clicking task
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(2000);
+
+        // Interact with the form
+        console.log('Clicking "Nee" radio button...');
+        await page.getByRole('radio', { name: 'Nee' }).check();
+
+        const toelichtingText = faker.lorem.words(3);
+        console.log(`Filling "Toelichting" with: "${toelichtingText}"`);
+        await page.getByRole('textbox', { name: 'Toelichting' }).fill(toelichtingText);
+
+        console.log('Clicking "Indienen" button...');
+        await page.getByRole('button', { name: 'Indienen' }).click();
+
+        // Wait for page to settle after submission
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log('"Nee" selected, toelichting filled, and form submitted.');
+
+      } catch (error) {
+        console.error('Failed during "Overwegen inzet handhaving" task processing:', error);
+        try {
+          await page.screenshot({ path: 'overwegen-inzet-handhaving-error.png', fullPage: true });
+          console.log('Screenshot saved as overwegen-inzet-handhaving-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 8. Process "Vaststellen identiteit aanvrager" task
+    await test.step('Process "Vaststellen identiteit aanvrager" task', async () => {
+      const taskName = "Vaststellen identiteit aanvrager";
+      try {
+        console.log(`Looking for task: "${taskName}"`);
+
+        // Wait for the task to appear in the panel and click it
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        console.log(`Task "${taskName}" is visible.`);
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for UI to update after clicking task (e.g., modal or new view to load)
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000); // Increased wait for form/buttons to be ready
+
+        // Interact with the form/task view
+        console.log('Clicking "Afronden" button...');
+        await page.getByRole('button', { name: 'Afronden' }).click();
+
+        // Wait for page to settle after action
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log(`Task "${taskName}" processed and "Afronden" button clicked.`);
+
+      } catch (error) {
+        console.error(`Failed during "${taskName}" task processing:`, error);
+        try {
+          await page.screenshot({ path: 'vaststellen-identiteit-aanvrager-error.png', fullPage: true });
+          console.log('Screenshot saved as vaststellen-identiteit-aanvrager-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 9. Process "Vaststellen identiteit partner" task (if applicable)
+    await test.step('Process "Vaststellen identiteit partner" task (if applicable)', async () => {
+      const taskName = "Vaststellen identiteit partner";
+      try {
+        console.log(`Attempting to find task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+
+        // Try to find the task, but with a shorter timeout as it's optional
+        await taskElement.waitFor({ state: 'visible', timeout: 10000 }); 
+        console.log(`Task "${taskName}" is visible.`);
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for UI to update
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000);
+
+        console.log('Clicking "Afronden" button...');
+        await page.getByRole('button', { name: 'Afronden' }).click();
+
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log(`Task "${taskName}" processed and "Afronden" button clicked.`);
+
+      } catch (error) {
+        // If the error is because the task was not found (e.g., TimeoutError), skip this task.
+        if (error.name === 'TimeoutError' || error.message.includes('Timeout') || error.message.includes('waiting for selector')) {
+          console.log(`Task "${taskName}" not found or not visible within timeout, skipping as it might be optional (no partner).`);
+        } else {
+          // For other errors, log them and re-throw
+          console.error(`Failed during "${taskName}" task processing:`, error);
+          try {
+            await page.screenshot({ path: 'vaststellen-identiteit-partner-error.png', fullPage: true });
+            console.log('Screenshot saved as vaststellen-identiteit-partner-error.png');
+          } catch (screenshotError) {
+            console.error('Failed to save error screenshot:', screenshotError);
+          }
+          throw error;
+        }
+      }
+    });
   });
 });
 
@@ -124,12 +287,6 @@ async function waitForAngular(page: Page) {
     await page.waitForFunction(() => {
       const angular = (window as any).ng;
       const appRootElement = document.querySelector('app-root');
-      // Browser-side logging for debugging (can be uncommented if needed by user later)
-      // if (!angular) console.log('Browser: window.ng not found.');
-      // if (!appRootElement) console.log('Browser: app-root element not found.');
-      // if (angular && appRootElement && !angular.getComponent(appRootElement)) {
-      //   console.log('Browser: angular.getComponent(app-root) returned null/undefined.');
-      // }
       return angular && appRootElement && angular.getComponent(appRootElement);
     }, { timeout: 30000 }); // 30 seconds timeout for Angular to be ready
 
