@@ -113,7 +113,7 @@ test.describe('Algemene bijstand (DCM) Flow', () => {
 
         // Wait for the task to appear in the panel
         const taskElement = page.getByText(taskName, { exact: true });
-        await taskElement.waitFor({ state: 'visible', timeout: 30000 }); // Wait up to 30s for the task to be visible
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
         console.log(`Task "${taskName}" is visible.`);
 
         // Click the task to open/activate it
@@ -124,25 +124,118 @@ test.describe('Algemene bijstand (DCM) Flow', () => {
         await page.waitForLoadState('networkidle', { timeout: 15000 });
         await page.waitForTimeout(2000); // Additional small delay for UI updates
 
-        console.log(`Successfully clicked and opened task "${taskName}".`);
-        
         // Interact with the form that appears after clicking the task
-        console.log('Clicking "Nee" radio button...');
-        await page.getByRole('radio', { name: 'Nee' }).check();
+        console.log('Clicking "Ja" radio button...');
+        await page.getByRole('radio', { name: 'Ja' }).check();
 
         console.log('Clicking "Indienen" button...');
         await page.getByRole('button', { name: 'Indienen' }).click();
 
         // Wait for page to settle after submission
         await page.waitForLoadState('networkidle', { timeout: 15000 });
-        console.log('"Nee" selected and form submitted.');
-
+        console.log('"Ja" selected and form submitted.');
       } catch (error) {
         console.error('Failed during "Overwegen uitzetten informatieverzoek" task processing:', error);
         // Take a screenshot for debugging
         try {
           await page.screenshot({ path: 'overwegen-uitzetten-infoverzoek-error.png', fullPage: true });
           console.log('Screenshot saved as overwegen-uitzetten-infoverzoek-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 6b. Process "Bepalen op te vragen items" task
+    await test.step('Process "Bepalen op te vragen items" task', async () => {
+      const taskName = "Bepalen op te vragen items";
+      try {
+        console.log(`Looking for task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(2000);
+
+        // 1. Select 'Ja' from the dropdown under 'Welke documenten wil je opvragen bij de aanvrager?'
+        console.log('Selecting "Ja" from the dropdown...');
+        let selectDropdown;
+        try {
+          selectDropdown = page.getByRole('combobox', { name: /Welke documenten wil je opvragen bij de aanvrager\?/i });
+          await selectDropdown.waitFor({ state: 'visible', timeout: 5000 });
+        } catch (error) {
+          selectDropdown = page.locator('select, [role="combobox"]').first();
+          await selectDropdown.waitFor({ state: 'visible', timeout: 5000 });
+        }
+        await selectDropdown.click();
+        await page.waitForTimeout(500);
+        // Try to select the option 'Ja' (assuming it's present)
+        let jaOption;
+        try {
+          jaOption = page.getByRole('option', { name: /^Ja$/ });
+          await jaOption.waitFor({ state: 'visible', timeout: 2000 });
+        } catch (error) {
+          jaOption = page.locator('option, [role="option"]').filter({ hasText: /^Ja$/ });
+          await jaOption.waitFor({ state: 'visible', timeout: 2000 });
+        }
+        await jaOption.click();
+        console.log('Selected "Ja" from the dropdown.');
+
+        // 2. Press the "Toevoegen" button below
+        console.log('Clicking "Toevoegen" button...');
+        const toevoegenButton = page.getByRole('button', { name: /Toevoegen/i });
+        await toevoegenButton.waitFor({ state: 'visible', timeout: 5000 });
+        await toevoegenButton.click();
+        console.log('Clicked "Toevoegen" button.');
+
+        // 3. Select a random date in 2025 from the date component
+        console.log('Selecting a random date in 2025...');
+        // Find all visible textboxes and try to fill the one that is not hidden and is likely a date input
+        const visibleInputs = await page.locator('input[type="text"]:not([type="hidden"]):visible').all();
+        let dateInputFound = false;
+        const randomMonth = Math.floor(Math.random() * 12) + 1;
+        const randomDay = Math.floor(Math.random() * 28) + 1;
+        const dateString = `${randomDay.toString().padStart(2, '0')}-${randomMonth.toString().padStart(2, '0')}-2025`;
+        for (const input of visibleInputs) {
+          // Try to fill the date, ignore errors for non-date fields
+          try {
+            await input.fill(dateString);
+            dateInputFound = true;
+            console.log(`Filled a visible date input with: ${dateString}`);
+            break;
+          } catch (e) {
+            // Ignore and try next
+          }
+        }
+        if (!dateInputFound) {
+          throw new Error('No visible date input found to fill!');
+        }
+
+        // 4. Select "Ja" for "Hersteltermijn van toepassing?"
+        console.log('Selecting "Ja" for "Hersteltermijn van toepassing?"');
+        await page.getByRole('radio', { name: 'Ja' }).check();
+
+        // 5. Select "Ik heb alle op te vragen items verzameld en wil het informatieverzoek uitzetten"
+        console.log('Selecting "Ik heb alle op te vragen items verzameld en wil het informatieverzoek uitzetten" radio button...');
+        await page.getByRole('radio', { name: /Ik heb alle op te vragen items verzameld en wil het informatieverzoek uitzetten/i }).check();
+
+        // 6. Press "Informatieverzoek uitzetten"
+        console.log('Clicking "Informatieverzoek uitzetten" button...');
+        const uitzettenButton = page.getByRole('button', { name: /Informatieverzoek uitzetten/i });
+        await uitzettenButton.waitFor({ state: 'visible', timeout: 5000 });
+        await uitzettenButton.click();
+        console.log('Clicked "Informatieverzoek uitzetten" button.');
+
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log('Bepalen op te vragen items task completed.');
+      } catch (error) {
+        console.error(`Failed during "${taskName}" task processing:`, error);
+        try {
+          await page.screenshot({ path: 'bepalen-op-te-vragen-items-error.png', fullPage: true });
+          console.log('Screenshot saved as bepalen-op-te-vragen-items-error.png');
         } catch (screenshotError) {
           console.error('Failed to save error screenshot:', screenshotError);
         }
@@ -269,6 +362,397 @@ test.describe('Algemene bijstand (DCM) Flow', () => {
           }
           throw error;
         }
+      }
+    });
+
+    // 10. Process "Selecteren verblijfadres aanvrager" task
+    await test.step('Process "Selecteren verblijfadres aanvrager" task', async () => {
+      const taskName = "Selecteren verblijfadres aanvrager";
+      try {
+        console.log(`Looking for task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        console.log(`Task "${taskName}" is visible.`);
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for UI to update (e.g., form/modal to load)
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000); // Increased wait for elements to be ready
+
+        console.log('Clicking "Verblijfadres" radio button...');
+        // Assuming "Verblijfadres" is a radio button or similar selectable role.
+        // If it's just text or a different role, this selector will need adjustment.
+        await page.getByRole('radio', { name: 'Verblijfadres' }).check(); 
+
+        const toelichtingText = faker.lorem.words(4);
+        console.log(`Filling "Toelichting" with: "${toelichtingText}"`);
+        await page.getByRole('textbox', { name: 'Toelichting' }).fill(toelichtingText);
+        
+        console.log('Clicking "Indienen" button...');
+        await page.getByRole('button', { name: 'Indienen' }).click();
+
+        // Wait for page to settle after submission
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log(`Task "${taskName}" processed: "Verblijfadres" selected, toelichting filled, and form submitted.`);
+
+      } catch (error) {
+        console.error(`Failed during "${taskName}" task processing:`, error);
+        try {
+          await page.screenshot({ path: 'selecteren-verblijfadres-error.png', fullPage: true });
+          console.log('Screenshot saved as selecteren-verblijfadres-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 11. Process "Selecteren verblijfadres partner" task (if applicable)
+    await test.step('Process "Selecteren verblijfadres partner" task (if applicable)', async () => {
+      const taskName = "Selecteren verblijfadres partner";
+      try {
+        console.log(`Attempting to find task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+
+        // Try to find the task, but with a shorter timeout as it's optional
+        await taskElement.waitFor({ state: 'visible', timeout: 10000 }); 
+        console.log(`Task "${taskName}" is visible.`);
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for UI to update
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000);
+
+        console.log('Clicking "Verblijfadres" radio button...');
+        await page.getByRole('radio', { name: 'Verblijfadres' }).check();
+
+        const toelichtingText = faker.lorem.words(4);
+        console.log(`Filling "Toelichting" with: "${toelichtingText}"`);
+        await page.getByRole('textbox', { name: 'Toelichting' }).fill(toelichtingText);
+
+        console.log('Clicking "Indienen" button...');
+        await page.getByRole('button', { name: 'Indienen' }).click();
+
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log(`Task "${taskName}" processed: "Verblijfadres" selected, toelichting filled, and form submitted.`);
+
+      } catch (error) {
+        // If the error is because the task was not found (e.g., TimeoutError), skip this task.
+        if (error.name === 'TimeoutError' || error.message.includes('Timeout') || error.message.includes('waiting for selector')) {
+          console.log(`Task "${taskName}" not found or not visible within timeout, skipping as it might be optional (no partner).`);
+        } else {
+          // For other errors, log them and re-throw
+          console.error(`Failed during "${taskName}" task processing:`, error);
+          try {
+            await page.screenshot({ path: 'selecteren-verblijfadres-partner-error.png', fullPage: true });
+            console.log('Screenshot saved as selecteren-verblijfadres-partner-error.png');
+          } catch (screenshotError) {
+            console.error('Failed to save error screenshot:', screenshotError);
+          }
+          throw error;
+        }
+      }
+    });
+
+    // 12. Initiate "Vaststellen verblijfstitel aanvrager"
+    await test.step('Process "Vaststellen verblijfstitel aanvrager" task', async () => {
+      const taskName = "Vaststellen verblijfstitel aanvrager";
+      try {
+        // 1. Select the task
+        console.log(`Looking for task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for the form to load
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000);
+
+        // 2. Fill in the form
+        // 2.1 Select "Nee" for "Is de aanvrager Nederlander?"
+        console.log('Looking for "Is de aanvrager Nederlander?" radio buttons...');
+        const neeRadio = page.getByRole('radio', { name: 'Nee' });
+        await neeRadio.waitFor({ state: 'visible', timeout: 10000 });
+        await neeRadio.check();
+        console.log('Selected "Nee" for "Is de aanvrager Nederlander?"');
+
+        // Wait longer for the dropdown to appear after selecting "Nee"
+        console.log('Waiting for dropdown to appear after selecting "Nee"...');
+        await page.waitForTimeout(2000);
+
+        // 2.2 Wait for dropdown to appear and select option starting with "10"
+        console.log('Looking for "Verblijfstitel vaststellen" dropdown...');
+        
+        // Try multiple approaches to find the dropdown
+        let verblijfstitelDropdown;
+        try {
+          // First try: exact label match
+          verblijfstitelDropdown = page.getByRole('combobox', { name: 'Verblijfstitel vaststellen' });
+          await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+        } catch (error) {
+          console.log('Exact label match failed, trying alternative selectors...');
+          try {
+            // Second try: partial label match
+            verblijfstitelDropdown = page.getByRole('combobox', { name: /verblijfstitel/i });
+            await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+          } catch (error2) {
+            console.log('Partial label match failed, trying by placeholder or other attributes...');
+            // Third try: find by any select element that might be the dropdown
+            verblijfstitelDropdown = page.locator('select, [role="combobox"], [data-key*="verblijfstitel"]').first();
+            await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+          }
+        }
+        
+        console.log('Found verblijfstitel dropdown, opening it...');
+        await verblijfstitelDropdown.click();
+        await page.waitForTimeout(1000);
+        
+        // Find the option with code "10" (Art. 10 van de Vreemdelingenwet)
+        console.log('Looking for option starting with "10"...');
+        let option10;
+        try {
+          option10 = page.getByRole('option', { name: /^10:/ });
+          await option10.waitFor({ state: 'visible', timeout: 5000 });
+        } catch (error) {
+          console.log('Option with regex failed, trying alternative...');
+          // Try finding by text content
+          option10 = page.locator('option, [role="option"]').filter({ hasText: /^10:/ });
+          await option10.waitFor({ state: 'visible', timeout: 5000 });
+        }
+        
+        await option10.click();
+        console.log('Selected verblijfstitel option starting with "10".');
+
+        // 2.3 Fill in the textbox labeled "Toelichting" with 3 random words
+        console.log('Looking for "Toelichting" textbox...');
+        const toelichtingText = faker.lorem.words(3);
+        
+        let toelichtingBox;
+        try {
+          toelichtingBox = page.getByRole('textbox', { name: 'Toelichting' });
+          await toelichtingBox.waitFor({ state: 'visible', timeout: 10000 });
+        } catch (error) {
+          console.log('Exact name match failed for Toelichting, trying alternative...');
+          toelichtingBox = page.getByRole('textbox', { name: /toelichting/i });
+          await toelichtingBox.waitFor({ state: 'visible', timeout: 10000 });
+        }
+        
+        await toelichtingBox.fill(toelichtingText);
+        console.log(`Filled "Toelichting" with: "${toelichtingText}"`);
+
+        // 3. Submit the form (click "Indienen")
+        console.log('Looking for "Indienen" button...');
+        const indienenButton = page.getByRole('button', { name: 'Indienen' });
+        await indienenButton.waitFor({ state: 'visible', timeout: 10000 });
+        await indienenButton.click();
+        console.log('Clicked "Indienen" button to submit the form.');
+
+        // Wait for submission/network to settle
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log('Vaststellen verblijfstitel aanvrager task completed.');
+      } catch (error) {
+        console.error(`Failed during "${taskName}" task processing:`, error);
+        try {
+          await page.screenshot({ path: 'vaststellen-verblijfstitel-aanvrager-error.png', fullPage: true });
+          console.log('Screenshot saved as vaststellen-verblijfstitel-aanvrager-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 13. Process "Vaststellen verblijfstitel partner" task (if applicable)
+    await test.step('Process "Vaststellen verblijfstitel partner" task (if applicable)', async () => {
+      const taskName = "Vaststellen verblijfstitel partner";
+      try {
+        console.log(`Attempting to find task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+        // Try to find the task, but with a shorter timeout as it's optional
+        await taskElement.waitFor({ state: 'visible', timeout: 10000 });
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        // Wait for the form to load
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(3000);
+
+        // 1. Select "Nee" for "Is de partner Nederlander?"
+        console.log('Looking for "Is de partner Nederlander?" radio buttons...');
+        const neeRadio = page.getByRole('radio', { name: 'Nee' });
+        await neeRadio.waitFor({ state: 'visible', timeout: 10000 });
+        await neeRadio.check();
+        console.log('Selected "Nee" for "Is de partner Nederlander?"');
+
+        // Wait for dropdown to appear after selecting "Nee"
+        console.log('Waiting for dropdown to appear after selecting "Nee"...');
+        await page.waitForTimeout(2000);
+
+        // 2. Wait for dropdown to appear and select option starting with "41"
+        console.log('Looking for "Verblijfstitel vaststellen" dropdown...');
+        let verblijfstitelDropdown;
+        try {
+          verblijfstitelDropdown = page.getByRole('combobox', { name: 'Verblijfstitel vaststellen' });
+          await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+        } catch (error) {
+          console.log('Exact label match failed, trying alternative selectors...');
+          try {
+            verblijfstitelDropdown = page.getByRole('combobox', { name: /verblijfstitel/i });
+            await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+          } catch (error2) {
+            console.log('Partial label match failed, trying by placeholder or other attributes...');
+            verblijfstitelDropdown = page.locator('select, [role="combobox"], [data-key*="verblijfstitel"]').first();
+            await verblijfstitelDropdown.waitFor({ state: 'visible', timeout: 5000 });
+          }
+        }
+        console.log('Found verblijfstitel dropdown, opening it...');
+        await verblijfstitelDropdown.click();
+        await page.waitForTimeout(1000);
+
+        // Find the option with code "41"
+        console.log('Looking for option starting with "41"...');
+        let option41;
+        try {
+          option41 = page.getByRole('option', { name: /^41:/ });
+          await option41.waitFor({ state: 'visible', timeout: 5000 });
+        } catch (error) {
+          console.log('Option with regex failed, trying alternative...');
+          option41 = page.locator('option, [role="option"]').filter({ hasText: /^41:/ });
+          await option41.waitFor({ state: 'visible', timeout: 5000 });
+        }
+        await option41.click();
+        console.log('Selected verblijfstitel option starting with "41".');
+
+        // 3. Fill in the textbox labeled "Toelichting" with 3 random words
+        console.log('Looking for "Toelichting" textbox...');
+        const toelichtingText = faker.lorem.words(3);
+        let toelichtingBox;
+        try {
+          toelichtingBox = page.getByRole('textbox', { name: 'Toelichting' });
+          await toelichtingBox.waitFor({ state: 'visible', timeout: 10000 });
+        } catch (error) {
+          console.log('Exact name match failed for Toelichting, trying alternative...');
+          toelichtingBox = page.getByRole('textbox', { name: /toelichting/i });
+          await toelichtingBox.waitFor({ state: 'visible', timeout: 10000 });
+        }
+        await toelichtingBox.fill(toelichtingText);
+        console.log(`Filled "Toelichting" with: "${toelichtingText}"`);
+
+        // 4. Submit the form (click "Indienen")
+        console.log('Looking for "Indienen" button...');
+        const indienenButton = page.getByRole('button', { name: 'Indienen' });
+        await indienenButton.waitFor({ state: 'visible', timeout: 10000 });
+        await indienenButton.click();
+        console.log('Clicked "Indienen" button to submit the form.');
+
+        // Wait for submission/network to settle
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        console.log('Vaststellen verblijfstitel partner task completed.');
+      } catch (error) {
+        // If the error is because the task was not found (e.g., TimeoutError), skip this task.
+        if (error.name === 'TimeoutError' || error.message.includes('Timeout') || error.message.includes('waiting for selector')) {
+          console.log(`Task "${taskName}" not found or not visible within timeout, skipping as it might be optional (no partner).`);
+        } else {
+          // For other errors, log them and re-throw
+          console.error(`Failed during "${taskName}" task processing:`, error);
+          try {
+            await page.screenshot({ path: 'vaststellen-verblijfstitel-partner-error.png', fullPage: true });
+            console.log('Screenshot saved as vaststellen-verblijfstitel-partner-error.png');
+          } catch (screenshotError) {
+            console.error('Failed to save error screenshot:', screenshotError);
+          }
+          throw error;
+        }
+      }
+    });
+
+    // 14. Start 'Verlengen deadline informatieverzoek' task
+    await test.step('Start "Verlengen deadline informatieverzoek" task', async () => {
+      try {
+        // 1. Locate and click the green Start button (top right)
+        console.log('Looking for the green Start button...');
+        const startButton = page.getByRole('button', { name: /^Start$/ });
+        await startButton.waitFor({ state: 'visible', timeout: 10000 });
+        await startButton.click();
+        console.log('Clicked the Start button.');
+
+        // 2. Select 'Verlengen deadline informatieverzoek' from the dropdown
+        console.log('Looking for "Verlengen deadline informatieverzoek" in dropdown...');
+        const verlengenOption = page.getByRole('menuitem', { name: /Verlengen deadline informatieverzoek/i });
+        await verlengenOption.waitFor({ state: 'visible', timeout: 10000 });
+        await verlengenOption.click();
+        console.log('Selected "Verlengen deadline informatieverzoek" from the dropdown.');
+
+        // 3. Click the 'doorgaan' button
+        console.log('Looking for "doorgaan" button...');
+        const doorgaanButton = page.getByRole('button', { name: /doorgaan/i });
+        await doorgaanButton.waitFor({ state: 'visible', timeout: 10000 });
+        await doorgaanButton.click();
+        console.log('Clicked "doorgaan" button.');
+      } catch (error) {
+        console.error('Failed to start "Verlengen deadline informatieverzoek" task:', error);
+        try {
+          await page.screenshot({ path: 'verlengen-deadline-informatieverzoek-error.png', fullPage: true });
+          console.log('Screenshot saved as verlengen-deadline-informatieverzoek-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
+      }
+    });
+
+    // 15. Process 'Invoeren nieuwe deadline' task
+    await test.step('Process "Invoeren nieuwe deadline" task', async () => {
+      const taskName = "Invoeren nieuwe deadline";
+      try {
+        console.log(`Looking for task: "${taskName}"`);
+        const taskElement = page.getByText(taskName, { exact: true });
+        await taskElement.waitFor({ state: 'visible', timeout: 30000 });
+        await taskElement.click();
+        console.log(`Clicked task: "${taskName}".`);
+
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+        await page.waitForTimeout(2000);
+
+        // Find all visible textboxes and try to fill the one that is not hidden and is likely a date input
+        console.log('Selecting a new random date in 2025...');
+        const visibleInputs = await page.locator('input[type="text"]:not([type="hidden"]):visible').all();
+        let dateInputFound = false;
+        const randomMonth = Math.floor(Math.random() * 12) + 1;
+        const randomDay = Math.floor(Math.random() * 28) + 1;
+        const dateString = `${randomDay.toString().padStart(2, '0')}-${randomMonth.toString().padStart(2, '0')}-2025`;
+        for (const input of visibleInputs) {
+          try {
+            await input.fill(dateString);
+            dateInputFound = true;
+            console.log(`Filled a visible date input with: ${dateString}`);
+            break;
+          } catch (e) {
+            // Ignore and try next
+          }
+        }
+        if (!dateInputFound) {
+          throw new Error('No visible date input found to fill!');
+        }
+
+        // Click the 'doorgaan' button
+        console.log('Looking for "doorgaan" button...');
+        const doorgaanButton = page.getByRole('button', { name: /doorgaan/i });
+        await doorgaanButton.waitFor({ state: 'visible', timeout: 10000 });
+        await doorgaanButton.click();
+        console.log('Clicked "doorgaan" button.');
+      } catch (error) {
+        console.error(`Failed during "${taskName}" task processing:`, error);
+        try {
+          await page.screenshot({ path: 'invoeren-nieuwe-deadline-error.png', fullPage: true });
+          console.log('Screenshot saved as invoeren-nieuwe-deadline-error.png');
+        } catch (screenshotError) {
+          console.error('Failed to save error screenshot:', screenshotError);
+        }
+        throw error;
       }
     });
   });
